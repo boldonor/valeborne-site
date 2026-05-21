@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – ValeBorne Inc.</title>
+  <meta name="description" content="ValeBorne due diligence services: Red Flag Audit, Deep Due Diligence, Unbundled Components, Portfolio Tiers, and Partnership Packages for genomic M&A." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Services-page-specific extras ── */
+    .core-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .unbundled-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .unbundled-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: box-shadow var(--trans), transform var(--trans), border-color var(--trans);
+    }
+    .unbundled-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+      border-color: rgba(0,180,216,.25);
+    }
+    .unbundled-card .ub-icon { font-size: 2rem; margin-bottom: 12px; }
+    .unbundled-card h4 { font-size: .95rem; margin-bottom: 6px; color: var(--text-head); }
+    .unbundled-card p  { font-size: .82rem; color: var(--text-muted); margin-bottom: 16px; }
+    .unbundled-card .price {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent-hover);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* Tiers */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .tier-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--trans), transform var(--trans);
+      position: relative;
+    }
+    .tier-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .tier-card.tier-recommended {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,180,216,.12), var(--shadow-md);
+    }
+    .tier-card.tier-recommended::before {
+      content: 'Recommended';
+      position: absolute;
+      top: -1px; right: 20px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .tier-card .tier-price {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent-hover);
+      line-height: 1;
+      margin: 8px 0 2px;
+    }
+    .tier-card .tier-unit {
+      font-family: var(--font-head);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .tier-card .tier-discount {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: .72rem;
+      font-weight: 700;
+      color: #2e7d32;
+      background: rgba(46,125,50,.08);
+      border: 1px solid rgba(46,125,50,.2);
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-bottom: 16px;
+    }
+    .tier-card p { font-size: .87rem; color: var(--text-body); margin-bottom: 20px; }
+    .tier-card ul.features {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .tier-card ul.features li {
+      font-size: .84rem;
+      color: var(--text-body);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .tier-card ul.features li:last-child { border-bottom: none; }
+    .tier-card ul.features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Partnership packages */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .pkg-card {
+      background: var(--bg-dark);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      color: rgba(255,255,255,.8);
+      transition: transform var(--trans), box-shadow var(--trans);
+    }
+    .pkg-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .pkg-card .pkg-label {
+      font-family: var(--font-head);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .pkg-card h3 { color: var(--white); margin-bottom: 4px; font-size: 1.25rem; }
+    .pkg-card .pkg-price {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin: 14px 0 4px;
+    }
+    .pkg-card .pkg-benefit {
+      font-family: var(--font-head);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 20px;
+    }
+    .pkg-card p { font-size: .87rem; color: rgba(255,255,255,.65); margin-bottom: 24px; }
+    .pkg-card ul {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .pkg-card ul li {
+      font-size: .85rem;
+      color: rgba(255,255,255,.65);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .pkg-card ul li:last-child { border-bottom: none; }
+    .pkg-card ul li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Discount callout bar */
+    .discount-bar {
+      background: rgba(0,180,216,.06);
+      border: 1px solid rgba(0,180,216,.2);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .discount-bar p { font-family: var(--font-head); font-size: .9rem; color: var(--text-body); margin: 0; }
+    .discount-bar strong { color: var(--accent-hover); }
+    .urgency-chip {
+      font-family: var(--font-head);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(0,180,216,.1);
+      border: 1px solid rgba(0,180,216,.25);
+      color: var(--accent-hover);
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .core-services-grid { grid-template-columns: 1fr; }
+      .unbundled-grid     { grid-template-columns: repeat(2, 1fr); }
+      .tiers-grid         { grid-template-columns: 1fr; }
+      .pkg-grid           { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .unbundled-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="page-fade"></div>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<header>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Vale<span>Borne</span></a>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="services.html" class="active">Services</a>
+          <a href="about.html">About</a>
+          <a href="index.html#consultation">Contact</a>
+        </div>
+        <a href="index.html#consultation" class="btn btn-primary btn-sm nav-cta">
+          Get Your Free Demo Assessment
+        </a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="index.html#consultation">Contact</a>
+      <a href="index.html#consultation" class="mob-cta">Get Your Free Demo Assessment</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════ -->
+<section class="page-hero" aria-labelledby="services-heading">
+  <div class="container">
+    <span class="overline">Due Diligence Services</span>
+    <h1 id="services-heading">Our Due Diligence Services</h1>
+    <p>From rapid 72-hour red flag assessments to comprehensive 10-day deep dives — built for PE firms, strategic acquirers, and Big Pharma deal teams.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CORE SERVICES — RFA & DDD
+══════════════════════════════════════ -->
+<section class="section services-section" id="rfa" aria-labelledby="core-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">Core Offerings</span>
+      <h2 id="core-heading">Red Flag Audit &amp; Deep Due Diligence</h2>
+      <div class="accent-rule centered"></div>
+      <p>Choose the depth of analysis that matches your deal stage and timeline.</p>
+    </div>
+
+    <div class="core-services-grid" id="ddd">
+
+      <!-- RFA -->
+      <div class="card reveal reveal-d1">
+        <div class="badge">Entry Level</div>
+        <h3>Red Flag Audit</h3>
+        <div class="price">$15,000</div>
+        <div class="duration">3-Day Turnaround</div>
+        <p class="desc">
+          Rapid assessment covering all four risk pillars. Identify the deal-breakers before committing significant diligence resources to a target.
+        </p>
+        <ul class="features">
+          <li>Legal &amp; regulatory exposure scan</li>
+          <li>IP ownership and patent expiry review</li>
+          <li>Financial ratio forensic screening</li>
+          <li>Operational red flag identification</li>
+          <li>Executive summary + risk scorecard</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-outline" style="width:100%;justify-content:center;">
+          Get RFA Assessment →
+        </a>
+      </div>
+
+      <!-- DDD — featured -->
+      <div class="card featured reveal reveal-d2">
+        <div class="badge">Most Comprehensive</div>
+        <h3>Deep Due Diligence</h3>
+        <div class="price">$45,000</div>
+        <div class="duration">10-Day Engagement</div>
+        <p class="desc">
+          Full-spectrum analysis with integration risk modeling, expert source interviews, and actionable renegotiation leverage before you sign.
+        </p>
+        <ul class="features">
+          <li>Everything in the Red Flag Audit</li>
+          <li>Patent portfolio depth analysis + expiry mapping</li>
+          <li>Integration cost modeling (Year 1–3 scenarios)</li>
+          <li>Scientific reproducibility scoring</li>
+          <li>Customer concentration &amp; churn analysis</li>
+          <li>Regulatory pathway risk assessment</li>
+          <li>Negotiation leverage report with price adjustment rationale</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Get DDD Assessment →
+        </a>
+      </div>
+
+      <!-- Why choose -->
+      <div class="card reveal reveal-d3" style="background: var(--bg-alt); border-style: dashed;">
+        <div class="card-icon">🎯</div>
+        <h3>Not Sure Which to Choose?</h3>
+        <p style="margin-bottom:20px;">
+          Start with a <strong>complimentary demo assessment</strong>. We'll run a sample risk profile on a target of your choice — at no cost — so you can evaluate our depth and methodology before committing.
+        </p>
+        <p style="font-size:.83rem;color:var(--text-muted);margin-bottom:24px;">
+          Most clients begin with an RFA to screen a target, then commission a DDD on those that pass initial review.
+        </p>
+        <a href="index.html#consultation" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Request Free Demo →
+        </a>
+        <div style="margin-top:16px;padding:14px 16px;background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.2);border-radius:var(--radius);font-family:var(--font-head);font-size:.8rem;color:var(--text-body);text-align:center;">
+          🎁 <strong style="color:var(--accent-hover);">25% founder's discount</strong> for first 10 clients
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     UNBUNDLED COMPONENTS
+══════════════════════════════════════ -->
+<section class="section section-alt services-section" id="unbundled" aria-labelledby="unbundled-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">À La Carte</span>
+      <h2 id="unbundled-heading">Unbundled Components</h2>
+      <div class="accent-rule centered"></div>
+      <p>Commission only the pillar most relevant to your concern. Each component is a complete, standalone audit deliverable. Upgrade to a full RFA or DDD at any time — component fees are credited.</p>
+    </div>
+
+    <div class="unbundled-grid">
+
+      <div class="unbundled-card reveal reveal-d1">
+        <div class="ub-icon">⚖️</div>
+        <h4>Legal &amp; Compliance</h4>
+        <p>IP ownership, regulatory posture, contracts, freedom-to-operate analysis.</p>
+        <span class="price">$3,750</span>
+        <a href="index.html#consultation" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;">
+          Get Legal Assessment →
+        </a>
+      </div>
+
+      <div class="unbundled-card reveal reveal-d2">
+        <div class="ub-icon">🧬</div>
+        <h4>Technical &amp; IP</h4>
+        <p>Data quality, reproducibility, infrastructure, API stability, provenance.</p>
+        <span class="price">$3,750</span>
+        <a href="index.html#consultation" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;">
+          Get Technical Assessment →
+        </a>
+      </div>
+
+      <div class="unbundled-card reveal reveal-d3">
+        <div class="ub-icon">💰</div>
+        <h4>Financial Health</h4>
+        <p>Burn rate, revenue quality, customer concentration, forensic accounting ratios.</p>
+        <span class="price">$3,750</span>
+        <a href="index.html#consultation" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;">
+          Get Financial Assessment →
+        </a>
+      </div>
+
+      <div class="unbundled-card reveal reveal-d4">
+        <div class="ub-icon">⚙️</div>
+        <h4>Operational Risk</h4>
+        <p>Team turnover, process maturity, vendor concentration, scalability signals.</p>
+        <span class="price">$3,750</span>
+        <a href="index.html#consultation" class="btn btn-outline btn-sm" style="width:100%;justify-content:center;">
+          Get Operational Assessment →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PORTFOLIO TIERS
+══════════════════════════════════════ -->
+<section class="section services-section" id="tiers" aria-labelledby="tiers-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">For VCs &amp; PE Firms</span>
+      <h2 id="tiers-heading">Portfolio Service Tiers</h2>
+      <div class="accent-rule centered"></div>
+      <p>Managing multiple deals? Our portfolio tiers offer volume pricing with consistent quality across your entire pipeline — Bronze through Gold based on depth required.</p>
+    </div>
+
+    <div class="tiers-grid">
+
+      <!-- Bronze -->
+      <div class="tier-card reveal reveal-d1">
+        <div class="badge badge-bronze">Bronze · Essential</div>
+        <h3>Bronze</h3>
+        <div class="tier-price">$6,500</div>
+        <div class="tier-unit">per company</div>
+        <div class="tier-discount">35% discount vs. standalone</div>
+        <p>Basic risk assessment with a standard report. Ideal for initial pipeline screening across multiple targets before committing to full diligence.</p>
+        <ul class="features">
+          <li>Four-pillar risk screening</li>
+          <li>Standard risk report</li>
+          <li>Executive summary</li>
+          <li>Red flag identification</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-outline" style="width:100%;justify-content:center;">
+          Get Bronze Assessment →
+        </a>
+      </div>
+
+      <!-- Silver -->
+      <div class="tier-card tier-recommended reveal reveal-d2">
+        <div class="badge badge-silver">Silver · Recommended</div>
+        <h3>Silver</h3>
+        <div class="tier-price">$7,500</div>
+        <div class="tier-unit">per company</div>
+        <div class="tier-discount">25% discount vs. standalone</div>
+        <p>Enhanced analysis with customized recommendations and an executive summary tailored to your investment thesis and portfolio strategy.</p>
+        <ul class="features">
+          <li>Everything in Bronze</li>
+          <li>Customized recommendations</li>
+          <li>Thesis-aligned executive summary</li>
+          <li>Comparative peer benchmarking</li>
+          <li>Deal priority ranking guidance</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Get Silver Assessment →
+        </a>
+      </div>
+
+      <!-- Gold -->
+      <div class="tier-card reveal reveal-d3">
+        <div class="badge badge-gold">Gold · Comprehensive</div>
+        <h3>Gold</h3>
+        <div class="tier-price">$8,500</div>
+        <div class="tier-unit">per company</div>
+        <div class="tier-discount">15% discount vs. standalone</div>
+        <p>Full deep diligence with integration risk modeling and ongoing consultation throughout the deal lifecycle — from LOI to close.</p>
+        <ul class="features">
+          <li>Everything in Silver</li>
+          <li>Integration risk modeling</li>
+          <li>Year 1–3 cost scenario analysis</li>
+          <li>Ongoing deal-lifecycle consultation</li>
+          <li>Post-close integration advisory</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-outline" style="width:100%;justify-content:center;">
+          Get Gold Assessment →
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Discount bar -->
+    <div class="discount-bar reveal">
+      <p>All portfolio tier services include a <strong>25% founder's discount for the first 10 clients</strong>. Contact us to confirm eligibility before your next deal closes.</p>
+      <span class="urgency-chip">⚡ Limited availability</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PARTNERSHIP PACKAGES
+══════════════════════════════════════ -->
+<section class="section section-alt services-section" id="packages" aria-labelledby="packages-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">High-Volume Acquirers</span>
+      <h2 id="packages-heading">Partnership Packages</h2>
+      <div class="accent-rule centered"></div>
+      <p>For firms with consistent deal flow in the genomic data sector, our partnership packages deliver maximum coverage at negotiated rates. Available by request.</p>
+    </div>
+
+    <div class="pkg-grid">
+
+      <!-- Package Tier 1 -->
+      <div class="pkg-card reveal reveal-d1">
+        <span class="pkg-label">Partnership · Tier 1</span>
+        <h3>Standard Partnership</h3>
+        <div class="pkg-price">$200,000</div>
+        <div class="pkg-benefit">Net benefit for client</div>
+        <p>Covers a full year of high-cadence deal screening and deep diligence — ideal for active PE firms with 3–5 genomic deals per year.</p>
+        <ul>
+          <li>10 Red Flag Audits (RFA)</li>
+          <li>5 Deep Due Diligence engagements (DDD)</li>
+          <li>Priority scheduling and dedicated analyst</li>
+          <li>Quarterly portfolio risk review</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Inquire About Tier 1 →
+        </a>
+      </div>
+
+      <!-- Package Tier 2 -->
+      <div class="pkg-card reveal reveal-d2">
+        <span class="pkg-label">Partnership · Tier 2</span>
+        <h3>Premium Partnership</h3>
+        <div class="pkg-price">$400,000</div>
+        <div class="pkg-benefit">Net benefit for client</div>
+        <p>For strategic acquirers and large PE firms running 6–10+ genomic transactions per year requiring full coverage across all deal stages.</p>
+        <ul>
+          <li>15 Red Flag Audits (RFA)</li>
+          <li>10 Deep Due Diligence engagements (DDD)</li>
+          <li>Dedicated senior analyst team</li>
+          <li>Monthly portfolio intelligence briefings</li>
+          <li>Integration advisory on closed deals</li>
+        </ul>
+        <a href="index.html#consultation" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Inquire About Tier 2 →
+        </a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;font-size:.85rem;color:var(--text-muted);margin-top:28px;">
+      Partnership packages are available by request and subject to scheduling availability. <a href="index.html#consultation">Contact us</a> to discuss terms.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════ -->
+<section class="section section-dark" aria-label="Call to action">
+  <div class="container" style="text-align:center;">
+    <div class="reveal">
+      <span class="overline">Start Today</span>
+      <h2 style="color:var(--white);margin-bottom:16px;">Protect Your Next Deal</h2>
+      <p style="color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 32px;font-size:.95rem;">
+        The only question is whether you want to know what's hidden before or after you close. Request a consultation — we'll scope the right engagement for your timeline and risk appetite.
+      </p>
+      <a href="index.html#consultation" class="btn btn-primary" style="margin-right:14px;margin-bottom:12px;">
+        Request a Consultation
+      </a>
+      <a href="index.html#consultation" class="btn btn-outline-white" style="margin-bottom:12px;">
+        Get Free Demo Assessment
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="site-footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">Vale<span>Borne</span></a>
+        <p>Genomic M&amp;A intelligence for firms that cannot afford to inherit risk. Charlotte, North Carolina.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="index.html#consultation">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="#rfa">Red Flag Audit</a>
+        <a href="#ddd">Deep Due Diligence</a>
+        <a href="#unbundled">Unbundled Components</a>
+        <a href="#tiers">Portfolio Tiers</a>
+        <a href="#packages">Partnership Packages</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@valeborne.com">hello@valeborne.com</a>
+        <a href="index.html#consultation">Book a Discovery Call</a>
+        <a href="about.html">Meet the Team</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ValeBorne Inc. All rights reserved. Delaware C-Corporation. Charlotte, NC.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="ValeBorne on LinkedIn" title="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const toggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* Smooth scroll for in-page anchors */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
