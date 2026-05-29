@@ -505,34 +505,58 @@ p:last-child { margin-bottom: 0; }
 ───────────────────────────────────────── */
 .service-summary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
 }
 .service-summary-card {
   background: var(--white);
   border: 1px solid var(--border);
+  border-top: 3px solid transparent;
   border-radius: var(--radius);
-  padding: 28px 24px;
+  padding: 40px 28px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--trans), transform var(--trans), border-color var(--trans);
+  transition: box-shadow var(--trans), transform var(--trans), border-color var(--trans), border-top-color var(--trans);
+  display: flex;
+  flex-direction: column;
 }
 .service-summary-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  border-color: rgba(0,180,216,.25);
+  transform: translateY(-4px);
+  border-color: rgba(0,180,216,.2);
+  border-top-color: var(--accent);
 }
-.service-summary-card .icon {
-  font-size: 1.6rem;
-  margin-bottom: 14px;
+.service-summary-card .svc-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(0,180,216,.08);
+  border: 1px solid rgba(0,180,216,.18);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.service-summary-card .svc-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .service-summary-card h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
 }
 .service-summary-card p {
-  font-size: .83rem;
+  font-size: .875rem;
   color: var(--text-muted);
   margin-bottom: 0;
+  line-height: 1.7;
+  flex: 1;
 }
 .services-link-row {
   text-align: center;
@@ -929,4 +953,11 @@ p:last-child { margin-bottom: 0; }
   .team-grid { grid-template-columns: 1fr; }
   .hero-stats { flex-direction: column; gap: 20px; }
   .container { padding: 0 18px; }
+}
+
+@media (max-width: 1100px) {
+  .service-summary-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 700px) {
+  .service-summary-grid { grid-template-columns: 1fr; }
 }
