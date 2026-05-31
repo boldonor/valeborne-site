@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ValeBorne | Genomic M&A Intelligence</title>
+  <!-- Google Fonts: clean sans-serif (Inter) and a touch of space for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #1a1e2b;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    /* JetBrains-inspired color palette: deep dark (almost black), electric purple, vivid blue, clean white */
+    :root {
+      --dark: #0a0c12;
+      --dark-muted: #1a1f2e;
+      --purple-primary: #6b3aff;
+      --purple-glow: #8b5eff;
+      --blue-accent: #2b7fff;
+      --blue-soft: #5c9eff;
+      --gray-bg: #f8f9fe;
+      --card-border: rgba(0, 0, 0, 0.05);
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 20px 30px -12px rgba(0, 0, 0, 0.12), 0 6px 12px -6px rgba(0, 0, 0, 0.02);
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header */
+    .site-header {
+      background: white;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.96);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--purple-primary) 0%, var(--blue-accent) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2c313d;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--purple-primary);
+    }
+    .btn-outline {
+      border: 1px solid var(--purple-primary);
+      background: transparent;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 600;
+      color: var(--purple-primary);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: var(--purple-primary);
+      color: white;
+      border-color: var(--purple-primary);
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, var(--purple-primary) 0%, var(--blue-accent) 100%);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 8px rgba(107, 58, 255, 0.2);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -8px rgba(43, 127, 255, 0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #cdd5e6;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--purple-primary);
+      background: #f5f0ff;
+    }
+
+    /* hero */
+    .hero {
+      padding: 80px 0 64px;
+      background: var(--gray-bg);
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: #eae5ff;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--purple-primary);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3.4rem;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--dark);
+    }
+    .hero-highlight {
+      background: linear-gradient(120deg, var(--purple-primary), var(--blue-accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #4a4f62;
+      margin-bottom: 32px;
+      max-width: 540px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      flex: 0.8;
+      background: white;
+      padding: 28px;
+      border-radius: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--purple-primary), var(--blue-accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* sections */
+    section {
+      padding: 80px 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+    .pillar-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      flex: 1 1 220px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      border: 1px solid var(--card-border);
+    }
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .pillar-icon {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    .pillar-card h3 {
+      margin-bottom: 12px;
+    }
+
+    /* pricing table */
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .pricing-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 28px;
+      flex: 1 1 260px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #eef2fa;
+      transition: all 0.2s;
+    }
+    .pricing-card.featured {
+      border-top: 4px solid var(--purple-primary);
+      position: relative;
+      background: linear-gradient(to bottom, #ffffff, #fefbff);
+    }
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 20px 0 12px;
+    }
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #5c6278;
+    }
+    .pill-list {
+      list-style: none;
+      margin: 24px 0;
+    }
+    .pill-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* lead magnet + form */
+    .lead-section {
+      background: linear-gradient(120deg, #f3f5ff, #ffffff);
+    }
+    .flex-2col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+    }
+    .form-card {
+      background: white;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: var(--shadow-hover);
+      flex: 1;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--purple-primary);
+      box-shadow: 0 0 0 3px rgba(107,58,255,0.1);
+    }
+    .confidential-note {
+      font-size: 0.75rem;
+      color: #6c7289;
+      margin-top: 16px;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #ccc;
+      padding: 48px 0;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    @media (max-width: 780px) {
+      .container { padding: 0 24px; }
+      .hero h1 { font-size: 2.5rem; }
+      .nav-links { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">ValeBorne</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact" class="btn-outline">Request demo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">⚡ Genomic M&A intelligence</div>
+        <h1>De‑risk <span class="hero-highlight">genomic acquisitions</span> with deep, cross‑pillar due diligence</h1>
+        <p>Red Flag Audits, Deep Due Diligence, and portfolio intelligence — tailored for VCs, Pharma BD, and PE firms.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" id="scrollToDemo">Book a free demo →</button>
+          <button class="btn-secondary" id="scrollToPricing">See pricing</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-number">$15M+</div>
+        <div style="margin-bottom: 16px;">integration risks identified for early clients</div>
+        <div class="stat-number">3‑day</div>
+        <div>RFA turnaround · live‑deal ready</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- four pillars -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our <span style="color: var(--purple-primary);">four‑pillar</span> methodology</h2>
+      <div class="pillars">
+        <div class="pillar-card"><div class="pillar-icon">⚖️</div><h3>Legal & Compliance</h3><p>IP ownership, regulatory hurdles, litigation risks.</p></div>
+        <div class="pillar-card"><div class="pillar-icon">🧬</div><h3>Technical & Data</h3><p>Reproducibility, pipeline integrity, AI validation.</p></div>
+        <div class="pillar-card"><div class="pillar-icon">📊</div><h3>Financial Health</h3><p>Burn rate, revenue quality, forensic ratios.</p></div>
+        <div class="pillar-card"><div class="pillar-icon">👥</div><h3>Operational Risk</h3><p>Talent stability, scalability, vendor risk.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing table (with unbundled 5k, RFA 15k) -->
+  <section id="pricing" style="background: var(--gray-bg);">
+    <div class="container">
+      <h2 class="section-title">Transparent, flexible pricing</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Unbundled component</h3>
+          <div class="price">$5,000 <small>each</small></div>
+          <ul class="pill-list">
+            <li>✓ Legality / Technical / Financial / Operational</li>
+            <li>✓ Targeted deep dive</li>
+            <li>✓ 48‑h rapid delivery</li>
+          </ul>
+          <button class="btn-outline select-component" style="width:100%">Select component</button>
+        </div>
+        <div class="pricing-card featured">
+          <h3>Red Flag Audit</h3>
+          <div class="price">$15,000 <small>best value</small></div>
+          <ul class="pill-list">
+            <li>✓ All 4 pillars (save $5k)</li>
+            <li>✓ 3‑day turnaround</li>
+            <li>✓ Executive summary + risk scoring</li>
+          </ul>
+          <button class="btn-primary demo-rfa" style="width:100%">Request RFA →</button>
+        </div>
+        <div class="pricing-card">
+          <h3>Deep Due Diligence</h3>
+          <div class="price">$45,000</div>
+          <ul class="pill-list"><li>✓ 10‑day integrated analysis</li><li>✓ Integration risk modeling</li><li>✓ Full cross‑pillar correlations</li></ul>
+          <button class="btn-outline deep-dd-btn" style="width:100%">Contact us</button>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top: 32px;">✨ Founder’s discount: 25% off for first 10 clients — <strong>only 7 left</strong></p>
+      <p style="text-align:center; margin-top: 12px; font-size:0.9rem;">Portfolio tiers & partnership packages available — <a href="#contact" style="color: var(--purple-primary);">request a custom quote</a></p>
+    </div>
+  </section>
+
+  <!-- lead magnet + demo request with target company field (confidential) -->
+  <section id="contact" class="lead-section">
+    <div class="container flex-2col">
+      <div>
+        <h2 style="font-size: 2rem;">Get the <span style="color:var(--purple-primary);">genomic risk checklist</span></h2>
+        <p style="margin: 20px 0; font-size:1.1rem;">Download our free PDF: <strong>“5 Genomic Data Risks in M&A Deals”</strong> — plus schedule a no‑obligation demo.</p>
+        <div style="background: #f0f2fa; border-radius: 24px; padding: 20px;">
+          <p style="font-weight: 500;">📘 In the PDF you'll learn:</p>
+          <ul style="margin-top: 12px; list-style: none;">
+            <li>✓ Hidden reproducibility liabilities</li>
+            <li>✓ Integration cost blindspots</li>
+            <li>✓ Key patent cliffs & regulatory deadlines</li>
+          </ul>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3 style="margin-bottom: 20px;">Request a demo & free PDF</h3>
+        <form id="demoForm">
+          <div class="form-group"><input type="text" placeholder="Full name *" id="fullname" required></div>
+          <div class="form-group"><input type="email" placeholder="Work email *" id="email" required></div>
+          <div class="form-group"><input type="text" placeholder="Company / firm" id="company"></div>
+          <div class="form-group">
+            <textarea rows="2" placeholder="Which specific genomic company (or technology area) are you currently evaluating? (Optional)" id="targetCompany"></textarea>
+            <div class="confidential-note">🔒 Your confidentiality is our priority. Any information you share about potential targets or deals will be kept strictly confidential and used only to prepare for our conversation. See our <a href="#" style="color:var(--purple-primary);">Privacy Policy</a>.</div>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%; margin-top: 12px;">Book a free demo →</button>
+        </form>
+        <div style="margin-top: 20px; text-align:center; font-size:0.8rem;">
+          Or schedule directly on <a href="#" id="calendlyMock" style="color: var(--blue-accent);">Calendly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- case studies & articles placeholder -->
+  <section id="insights">
+    <div class="container">
+      <h2 class="section-title">Insights & case studies</h2>
+      <div class="pillars" style="gap: 24px;">
+        <div class="pillar-card" style="flex:1">
+          <h3>📄 5 Genomic Data Risks in M&A</h3>
+          <p style="margin: 12px 0;">How hidden data provenance gaps can slash valuation by 40%.</p>
+          <a href="#" class="btn-outline" style="display:inline-block;">Download PDF</a>
+        </div>
+        <div class="pillar-card" style="flex:1">
+          <h3>🔍 Case: $15M integration risk</h3>
+          <p>Found critical pipeline reproducibility flaw → client renegotiated terms.</p>
+          <a href="#" class="btn-outline" style="display:inline-block;">Read more</a>
+        </div>
+        <div class="pillar-card" style="flex:1">
+          <h3>📈 Industry report: Genomic M&A trends</h3>
+          <p>Exclusive data on deal multiples & regulatory headwinds.</p>
+          <a href="#" class="btn-outline" style="display:inline-block;">Access report</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><strong>ValeBorne Inc.</strong><br>Delaware C‑Corp · Charlotte, NC<br>© 2025 — data intelligence for strategic transactions</div>
+    <div><a href="#" style="color:#aaa; text-decoration:none;">hello@valeborne.com</a><br><a href="#" style="color:#aaa;">LinkedIn</a> · <a href="#" style="color:#aaa;">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // Smooth scroll
+    const scrollToDemo = document.getElementById('scrollToDemo');
+    const scrollToPricing = document.getElementById('scrollToPricing');
+    const contactSection = document.getElementById('contact');
+    const pricingSection = document.getElementById('pricing');
+    if(scrollToDemo) scrollToDemo.addEventListener('click', (e) => { e.preventDefault(); contactSection?.scrollIntoView({ behavior: 'smooth' }); });
+    if(scrollToPricing) scrollToPricing.addEventListener('click', (e) => { e.preventDefault(); pricingSection?.scrollIntoView({ behavior: 'smooth' }); });
+
+    // Form submission (simulate alert, collect values)
+    const form = document.getElementById('demoForm');
+    if(form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('fullname')?.value.trim();
+        const email = document.getElementById('email')?.value.trim();
+        const company = document.getElementById('company')?.value.trim();
+        const target = document.getElementById('targetCompany')?.value.trim();
+        if(!name || !email) {
+          alert('Please provide your name and work email.');
+          return;
+        }
+        // mock success
+        alert(`✅ Thanks ${name}! We'll reach out within 24h to schedule a risk-revealing demo.\n${ target ? `We'll prep insights on: ${target.substring(0,60)}` : 'We\'ll prepare a custom demo based on your focus area.' }\n\nYou'll receive the genomic risk checklist via email.`);
+        form.reset();
+      });
+    }
+
+    // simple dynamic stats (JS liveliness)
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if(statNumbers.length) {
+      const animateNumber = (el, target, suffix='') => {
+        let current = 0;
+        const step = Math.ceil(target / 40);
+        const timer = setInterval(() => {
+          current += step;
+          if(current >= target) {
+            el.innerText = target.toLocaleString() + suffix;
+            clearInterval(timer);
+          } else {
+            el.innerText = current.toLocaleString() + suffix;
+          }
+        }, 20);
+      };
+      // first stat $15M+, second stat 3-day (static)
+      const firstStat = statNumbers[0];
+      if(firstStat && firstStat.innerText.includes('$15M')) {
+        firstStat.innerText = '$0M';
+        animateNumber(firstStat, 15, 'M+');
+      }
+    }
+
+    // button interactions (demo component selectors)
+    const compBtns = document.querySelectorAll('.select-component, .demo-rfa, .deep-dd-btn');
+    compBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = document.getElementById('contact');
+        if(section) section.scrollIntoView({ behavior: 'smooth' });
+        const msg = btn.classList.contains('select-component') ? 'Unbundled component selected — share your focus area in the form.' : 
+                    (btn.classList.contains('demo-rfa') ? 'Red Flag Audit — best value. Fill the form to get started.' : 
+                    'Deep Due Diligence — we will contact you within a few hours.');
+        alert(msg);
+      });
+    });
+    const calendlyMock = document.getElementById('calendlyMock');
+    if(calendlyMock) calendlyMock.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Calendly integration ready — direct scheduling link will be provided after request.');
+    });
+  })();
+</script>
+</body>
+</html>
