@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ValeBorne – Genomic M&amp;A Intelligence | De-risk Your Next Acquisition</title>
+<meta name="description" content="Genomic M&amp;A due diligence – Red Flag Audits, Deep Due Diligence, and portfolio risk assessments for VCs and pharma." />
+<meta name="keywords" content="genomic M&amp;A, due diligence, biotech acquisition, life sciences, venture capital, pharma BD" />
+<meta property="og:title" content="ValeBorne – Genomic M&amp;A Intelligence" />
+<meta property="og:description" content="Proprietary due diligence that uncovers hidden risks in genomic data companies – before you sign." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<!-- Hidden forms for Netlify Forms detection -->
+<form name="demo-request" netlify hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="company" />
+  <input type="text" name="target" />
+</form>
+<form name="lead-magnet" netlify hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="company" />
+</form>
+
+<style>
+:root {
+  /* ── Canvas */
+  --bg:           #000000;
+  --bg-alt:       #0E0E10;
+  --surface:      #19191C;
+  --surface-2:    #27282C;
+  --surface-3:    #1F1F22;
+  --border:       rgba(255,255,255,.10);
+  --border-2:     rgba(255,255,255,.18);
+  --text:         #FFFFFF;
+  --text-2:       rgba(255,255,255,.72);
+  --text-3:       rgba(255,255,255,.48);
+  --text-4:       rgba(255,255,255,.32);
+
+  /* ── Signature gradient (ValeBorne primary) */
+  --grad-brand:   linear-gradient(135deg, #00C4F4 0%, #087CFA 100%);
+  --brand:        #00C4F4;
+  --brand-2:      #087CFA;
+
+  /* ── Tile-signature gradients (one per section/pillar) */
+  --grad-cyan:    linear-gradient(135deg, #00C4F4 0%, #087CFA 100%);
+  --grad-purple:  linear-gradient(135deg, #7256FF 0%, #FF45ED 100%);
+  --grad-green:   linear-gradient(135deg, #21D789 0%, #00C4F4 100%);
+  --grad-amber:   linear-gradient(135deg, #FF2D90 0%, #FFB700 100%);
+  --grad-warm:    linear-gradient(135deg, #FF318C 0%, #F89E07 100%);
+  --grad-violet:  linear-gradient(135deg, #6B57FF 0%, #00C4F4 100%);
+
+  /* ── Status colors */
+  --green:        #21D789;
+  --amber:        #FFB700;
+  --pink:         #FF318C;
+  --success:      #21D789;
+  --error:        #FF318C;
+
+  /* ── Geometry */
+  --r-sm:         8px;
+  --r-md:         16px;
+  --r-lg:         24px;
+  --r-pill:       100px;
+
+  /* ── Motion */
+  --t:            .25s cubic-bezier(.4,0,.2,1);
+  --t-slow:       .5s cubic-bezier(.4,0,.2,1);
+
+  /* ── Layout */
+  --max:          1280px;
+  --pad:          32px;
+  --font:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ── Reset */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.55;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+a { color: var(--text); text-decoration: none; transition: color var(--t), opacity var(--t); }
+
+::selection { background: var(--brand); color: #000; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+
+/* ── Page fade */
+#page-fade {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  pointer-events: none;
+  animation: pageFade .8s ease forwards;
+}
+@keyframes pageFade { to { opacity: 0; visibility: hidden; } }
+
+/* ── Scroll progress */
+#scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0;
+  background: var(--grad-brand);
+  z-index: 1000;
+  transition: width .1s linear;
+}
+
+/* ── Typography */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font);
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.025em;
+}
+h1 { font-size: clamp(3rem, 7vw, 6rem); font-weight: 900; letter-spacing: -.04em; }
+h2 { font-size: clamp(2.2rem, 4.5vw, 3.6rem); letter-spacing: -.035em; }
+h3 { font-size: clamp(1.4rem, 2.2vw, 1.7rem); font-weight: 700; letter-spacing: -.02em; }
+h4 { font-size: 1.15rem; font-weight: 600; letter-spacing: -.01em; }
+p  { color: var(--text-2); margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+em { font-style: normal; }
+
+.overline {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+/* ── Gradient text utility */
+.gradient-text {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+.gradient-text.purple  { background: var(--grad-purple); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gradient-text.green   { background: var(--grad-green);  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gradient-text.amber   { background: var(--grad-amber);  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gradient-text.warm    { background: var(--grad-warm);   -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gradient-text.violet  { background: var(--grad-violet); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ── Layout */
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.section { padding: 140px 0; position: relative; }
+.section-sm { padding: 96px 0; }
+.section-header { max-width: 760px; margin-bottom: 72px; }
+.section-header.centered { margin-left: auto; margin-right: auto; text-align: center; }
+.section-header p { color: var(--text-3); font-size: 1.05rem; margin-top: 20px; max-width: 620px; }
+.section-header.centered p { margin-left: auto; margin-right: auto; }
+
+/* ── Buttons (JetBrains "Rock" style) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: -.005em;
+  padding: 16px 32px;
+  border-radius: var(--r-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background var(--t), color var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--text);
+  transform: translateY(-1px);
+}
+.btn-gradient {
+  background: var(--grad-brand);
+  color: var(--bg);
+  border-color: transparent;
+  font-weight: 700;
+}
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,196,244,.35);
+  color: var(--bg);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-2);
+}
+.btn-outline:hover {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 11px 22px; font-size: .85rem; }
+.btn-arrow::after {
+  content: '→';
+  display: inline-block;
+  transition: transform var(--t);
+  margin-left: 4px;
+}
+.btn-arrow:hover::after { transform: translateX(4px); }
+
+/* ── Navigation */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t), background var(--t);
+}
+.site-nav.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(0,0,0,.88);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.nav-logo .dot {
+  display: inline-block;
+  width: 9px; height: 9px;
+  background: var(--grad-brand);
+  border-radius: 50%;
+  margin-left: 4px;
+  vertical-align: 4px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin-left: 56px;
+}
+.nav-links a {
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--text-2);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -22px; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta { margin-left: auto; flex-shrink: 0; }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  margin-left: auto;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--t);
+}
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 16px 0;
+}
+.mobile-menu a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  padding: 16px var(--pad);
+}
+.mobile-menu a.mob-cta {
+  background: var(--text);
+  color: var(--bg);
+  margin: 12px var(--pad) 0;
+  border-radius: var(--r-pill);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 140px;
+  background: var(--bg);
+}
+/* Mesh-style blurred gradient blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -150px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(7,124,250,.22) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -300px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(114,86,255,.16) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+}
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  opacity: .35;
+  pointer-events: none;
+}
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  margin-bottom: 32px;
+}
+.hero-eyebrow .pip {
+  width: 6px; height: 6px;
+  background: var(--brand);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--brand);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.hero h1 {
+  color: var(--text);
+  margin-bottom: 32px;
+}
+.hero h1 em {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--text-2);
+  margin-bottom: 44px;
+  line-height: 1.6;
+  max-width: 560px;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-stats {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 96px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+.hero-stat { padding-right: 24px; }
+.hero-stat + .hero-stat { padding-left: 24px; border-left: 1px solid var(--border); }
+.hero-stat .num {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 900;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin-bottom: 10px;
+}
+.hero-stat:nth-child(2) .num { background: var(--grad-purple); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-stat:nth-child(3) .num { background: var(--grad-green);  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-stat .lbl {
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text-3);
+  letter-spacing: .02em;
+}
+
+/* Hero card */
+.hero-visual { position: relative; z-index: 1; }
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad-brand);
+}
+.hero-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-card-title {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -.005em;
+}
+.hero-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--brand);
+  padding: 5px 12px;
+  background: rgba(0,196,244,.1);
+  border: 1px solid rgba(0,196,244,.25);
+  border-radius: var(--r-pill);
+}
+.hero-card-status::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--brand);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--brand);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.hero-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-size: .88rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-card-row:last-child { border-bottom: none; }
+.hero-card-row .label-txt { color: var(--text-3); }
+.hero-card-row .val {
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.risk-pill {
+  font-size: .7rem;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+.risk-pill.low  { color: var(--green); background: rgba(33,215,137,.12); border: 1px solid rgba(33,215,137,.3); }
+.risk-pill.mid  { color: var(--amber); background: rgba(255,183,0,.12);  border: 1px solid rgba(255,183,0,.3); }
+.risk-pill.high { color: var(--pink);  background: rgba(255,49,140,.12); border: 1px solid rgba(255,49,140,.3); }
+
+/* ============================================================
+   SERVICES — FOUR PILLARS (tile signatures)
+============================================================ */
+#services { background: var(--bg); }
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.pillar-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 40px;
+  overflow: hidden;
+  transition: transform var(--t), border-color var(--t);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-2);
+}
+/* The signature gradient ribbon at top */
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  opacity: .9;
+}
+.pillar-card[data-grad="cyan"]::before   { background: var(--grad-cyan); }
+.pillar-card[data-grad="purple"]::before { background: var(--grad-purple); }
+.pillar-card[data-grad="green"]::before  { background: var(--grad-green); }
+.pillar-card[data-grad="amber"]::before  { background: var(--grad-amber); }
+
+/* Decorative glow blob behind icon */
+.pillar-card::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  z-index: 0;
+}
+.pillar-card[data-grad="cyan"]::after   { background: #00C4F4; }
+.pillar-card[data-grad="purple"]::after { background: #7256FF; }
+.pillar-card[data-grad="green"]::after  { background: #21D789; }
+.pillar-card[data-grad="amber"]::after  { background: #FF2D90; }
+.pillar-card:hover::after { opacity: .12; }
+
+.pillar-icon {
+  width: 56px; height: 56px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  color: var(--bg);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.pillar-card[data-grad="cyan"]   .pillar-icon { background: var(--grad-cyan); }
+.pillar-card[data-grad="purple"] .pillar-icon { background: var(--grad-purple); }
+.pillar-card[data-grad="green"]  .pillar-icon { background: var(--grad-green); }
+.pillar-card[data-grad="amber"]  .pillar-icon { background: var(--grad-amber); }
+.pillar-icon svg {
+  width: 26px; height: 26px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pillar-card h3 {
+  position: relative; z-index: 1;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+.pillar-card p {
+  position: relative; z-index: 1;
+  font-size: .98rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 22px;
+  flex: 1;
+}
+.pillar-tags {
+  position: relative; z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+.pillar-tag {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--text-2);
+  padding: 6px 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+}
+
+/* ============================================================
+   PRICING
+============================================================ */
+#pricing { background: var(--bg-alt); }
+.pricing-block + .pricing-block { margin-top: 88px; }
+.pricing-block-header { margin-bottom: 32px; }
+.pricing-block-header h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.pricing-block-header p { color: var(--text-3); font-size: 1rem; }
+
+.price-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.price-cards.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.price-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px;
+  transition: border-color var(--t), transform var(--t);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+}
+.price-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-2);
+}
+.price-card.featured {
+  background: var(--surface);
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(var(--surface), var(--surface)),
+    var(--grad-brand);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.price-card.featured::before {
+  content: 'Best Value · Save $5,000';
+  position: absolute;
+  top: 24px; right: 24px;
+  background: var(--grad-brand);
+  color: var(--bg);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  z-index: 2;
+}
+.price-card.featured::after {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,196,244,.18) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+}
+.price-card.dark-card {
+  background: #000;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.price-card.dark-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.price-card.partnership-1::before { background: var(--grad-purple); }
+.price-card.partnership-2::before { background: var(--grad-warm); }
+.price-card.dark-card::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .14;
+}
+.price-card.partnership-1::after { background: #7256FF; }
+.price-card.partnership-2::after { background: #FF318C; }
+
+.price-tier-label {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.price-card h4 {
+  font-size: 1.55rem;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.price-card .price-amt {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  margin: 18px 0 4px;
+  letter-spacing: -.04em;
+  position: relative;
+  z-index: 1;
+}
+.price-card.featured .price-amt {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.price-card.partnership-1 .price-amt {
+  background: var(--grad-purple);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.price-card.partnership-2 .price-amt {
+  background: var(--grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.price-card .price-period {
+  font-size: .82rem;
+  color: var(--text-3);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+.price-card .price-desc {
+  font-size: .92rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+.price-card .price-features {
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.price-card .price-features li {
+  font-size: .9rem;
+  color: var(--text-2);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.price-card .price-features li:last-child { border-bottom: none; }
+.price-card .price-features li::before {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+}
+.price-card .price-features li::after {
+  content: '✓';
+  position: absolute;
+  margin-left: 4px;
+  margin-top: 0;
+  color: var(--bg);
+  font-size: .65rem;
+  font-weight: 900;
+  line-height: 16px;
+}
+.price-card.partnership-1 .price-features li::before { background: var(--grad-purple); }
+.price-card.partnership-2 .price-features li::before { background: var(--grad-warm); }
+.price-card .btn { width: 100%; margin-top: auto; position: relative; z-index: 1; }
+
+/* ── Founder's discount callout */
+.founder-callout {
+  margin-top: 56px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+.founder-callout::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 5px;
+  background: var(--grad-warm);
+}
+.founder-callout-text {
+  flex: 1;
+  min-width: 280px;
+  font-size: 1rem;
+  color: var(--text-2);
+}
+.founder-callout-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+.founder-chip {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--grad-warm);
+  color: var(--bg);
+  padding: 10px 18px;
+  border-radius: var(--r-pill);
+}
+
+/* ── Satisfaction pledge */
+.pledge-card {
+  margin-top: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.pledge-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--grad-green);
+}
+.pledge-icon {
+  width: 60px; height: 60px;
+  background: var(--grad-green);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+.pledge-icon svg {
+  width: 28px; height: 28px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pledge-card h4 { font-size: 1.25rem; margin-bottom: 8px; }
+.pledge-card p { font-size: 1rem; color: var(--text-2); margin: 0; line-height: 1.65; }
+.pledge-card .pledge-label {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* ============================================================
+   LEAD MAGNET
+============================================================ */
+#lead-magnet {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+#lead-magnet::before {
+  content: '';
+  position: absolute;
+  bottom: -250px;
+  left: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(114,86,255,.16) 0%, transparent 60%);
+  filter: blur(50px);
+}
+#lead-magnet::after {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,45,144,.12) 0%, transparent 60%);
+  filter: blur(50px);
+}
+.lead-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.lead-grid h2 { margin-bottom: 24px; }
+.lead-magnet-cover {
+  background: linear-gradient(140deg, #7256FF 0%, #FF45ED 100%);
+  border-radius: var(--r-lg);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(114,86,255,.3);
+}
+.lead-magnet-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.15) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.1) 0%, transparent 35%);
+  pointer-events: none;
+}
+.lead-cover-tag {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+.lead-cover-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.lead-cover-list {
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+.lead-cover-list li {
+  font-size: .92rem;
+  color: rgba(255,255,255,.88);
+  padding: 8px 0;
+  display: flex;
+  gap: 12px;
+  font-weight: 500;
+}
+.lead-cover-list li::before {
+  content: '→';
+  color: rgba(255,255,255,.95);
+  font-weight: 700;
+}
+.lead-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 40px;
+}
+.lead-form h3 { color: var(--text); font-size: 1.4rem; margin-bottom: 24px; }
+
+/* ============================================================
+   ARTICLES
+============================================================ */
+#articles { background: var(--bg-alt); }
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.article-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform var(--t), border-color var(--t);
+  display: flex;
+  flex-direction: column;
+}
+.article-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-2);
+}
+.article-thumb {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article-thumb.grad-1 { background: var(--grad-purple); }
+.article-thumb.grad-2 { background: var(--grad-green); }
+.article-thumb.grad-3 { background: var(--grad-amber); }
+.article-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(255,255,255,.18) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.1) 0%, transparent 40%);
+  pointer-events: none;
+}
+.article-thumb svg {
+  position: relative;
+  z-index: 1;
+  width: 64px; height: 64px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.5;
+  opacity: .95;
+}
+.article-thumb .case-study-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  z-index: 2;
+}
+.article-body {
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.article-meta {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+.article-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: var(--text);
+}
+.article-card p {
+  font-size: .92rem;
+  color: var(--text-2);
+  margin-bottom: 22px;
+  flex: 1;
+  line-height: 1.6;
+}
+.article-link {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap var(--t);
+}
+.article-link:hover { gap: 14px; color: var(--text); }
+.article-card.coming-soon .article-link {
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+/* ============================================================
+   CONTACT FORM
+============================================================ */
+#contact { background: var(--bg); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 72px;
+  align-items: start;
+}
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.contact-info p {
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.contact-info p + p { margin-top: 14px; }
+.contact-methods { margin-top: 40px; }
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-method:last-child { border-bottom: none; }
+.contact-method-icon {
+  width: 44px; height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.contact-method-icon svg {
+  width: 20px; height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-method-text strong {
+  display: block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 4px;
+}
+.contact-method-text span,
+.contact-method-text a {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.contact-method-text a:hover { color: var(--brand); }
+.calendly-cta-card {
+  margin-top: 32px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px dashed var(--border-2);
+  border-radius: var(--r-lg);
+}
+.calendly-cta-card h4 { font-size: 1.1rem; margin-bottom: 8px; }
+.calendly-cta-card p {
+  font-size: .9rem;
+  color: var(--text-3);
+  margin-bottom: 18px;
+}
+
+.demo-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 48px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.form-group { margin-bottom: 22px; }
+.form-group label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.form-group label .req { color: var(--pink); margin-left: 2px; }
+.form-group label .opt {
+  font-weight: 400;
+  color: var(--text-3);
+  font-size: .75rem;
+  margin-left: 6px;
+}
+.form-group .helper {
+  font-size: .82rem;
+  color: var(--text-3);
+  line-height: 1.55;
+  margin-top: -4px;
+  margin-bottom: 10px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: .95rem;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  outline: none;
+  transition: border-color var(--t), background var(--t), box-shadow var(--t);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-4); }
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--brand);
+  background: var(--bg-alt);
+  box-shadow: 0 0 0 3px rgba(0,196,244,.12);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 92px;
+  line-height: 1.55;
+}
+
+.confidentiality-notice {
+  margin-top: 10px;
+  padding: 18px 20px;
+  background: rgba(0,196,244,.05);
+  border: 1px solid rgba(0,196,244,.2);
+  border-radius: var(--r-md);
+  font-size: .88rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  display: flex;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.confidentiality-notice::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--grad-brand);
+}
+.confidentiality-notice svg {
+  width: 22px; height: 22px;
+  stroke: var(--brand);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.confidentiality-notice strong { color: var(--text); font-weight: 600; }
+.confidentiality-notice a { color: var(--brand); text-decoration: underline; }
+
+.form-submit-row { margin-top: 28px; }
+.form-submit-row .btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 1rem;
+}
+.form-success {
+  display: none;
+  padding: 28px;
+  background: rgba(33,215,137,.08);
+  border: 1px solid rgba(33,215,137,.3);
+  border-radius: var(--r-md);
+  color: var(--green);
+  font-weight: 600;
+  text-align: center;
+}
+.form-success.active { display: block; }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.site-footer {
+  background: var(--bg);
+  color: var(--text-3);
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+}
+.footer-brand .nav-logo {
+  display: block;
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-size: .92rem;
+  max-width: 360px;
+  line-height: 1.65;
+  color: var(--text-3);
+}
+.footer-col h5 {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 20px;
+}
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col a {
+  font-size: .92rem;
+  color: var(--text-2);
+}
+.footer-col a:hover { color: var(--text); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-bottom p {
+  font-size: .82rem;
+  color: var(--text-3);
+  margin: 0;
+}
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 40px; height: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-2);
+  transition: var(--t);
+}
+.footer-social a svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
+.footer-social a:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: rgba(0,196,244,.08);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ── Scroll-to-top */
+#scroll-top {
+  position: fixed;
+  bottom: 36px; right: 36px;
+  width: 52px; height: 52px;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: var(--t);
+  z-index: 800;
+}
+#scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+#scroll-top:hover {
+  background: var(--brand);
+  transform: translateY(-3px);
+}
+#scroll-top svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1100px) {
+  :root { --pad: 24px; }
+  .articles-grid { grid-template-columns: repeat(2, 1fr); }
+  .price-cards.cols-3 { grid-template-columns: 1fr; }
+  .section { padding: 100px 0; }
+}
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .mobile-menu.open { display: flex; }
+
+  .hero { padding: 80px 0 100px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+  .hero-visual { display: none; }
+  .hero-stats { margin-top: 64px; padding-top: 36px; }
+  .hero-stat + .hero-stat { padding-left: 16px; }
+  .hero-stat { padding-right: 16px; }
+
+  .pillars-grid { grid-template-columns: 1fr; }
+  .lead-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .price-cards, .price-cards.cols-3 { grid-template-columns: 1fr; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .pledge-card { flex-direction: column; gap: 20px; }
+  .demo-form { padding: 32px; }
+}
+@media (max-width: 600px) {
+  .hero-stats { grid-template-columns: 1fr; gap: 24px; }
+  .hero-stat { padding: 0; }
+  .hero-stat + .hero-stat {
+    padding-left: 0;
+    padding-top: 24px;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas .btn { width: 100%; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .demo-form { padding: 24px; }
+  #scroll-top { bottom: 20px; right: 20px; }
+  .pillar-card, .price-card { padding: 28px; }
+  .lead-form { padding: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div id="page-fade"></div>
+<div id="scroll-progress"></div>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<header>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#home" class="nav-logo">ValeBorne<span class="dot"></span></a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#articles">Insights</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta">Request a Free Demo</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#articles">Insights</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="mob-cta">Request a Free Demo</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home" aria-labelledby="hero-heading">
+  <canvas id="hero-canvas"></canvas>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="pip"></span>
+          Genomic M&amp;A Intelligence
+        </div>
+        <h1 id="hero-heading">De-risk your next <em>acquisition.</em></h1>
+        <p class="hero-sub">
+          Proprietary due diligence that uncovers hidden risks in genomic data companies — before you sign. We combine data science, regulatory expertise, and financial forensics so you never inherit a surprise.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-gradient">Request a Free Demo</a>
+          <a href="#pricing" class="btn btn-outline">See Our Pricing</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num" data-target="72">0</div>
+            <div class="lbl">Hour RFA turnaround</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-target="4">0</div>
+            <div class="lbl">Risk pillars assessed</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-target="10" data-suffix="×">0</div>
+            <div class="lbl">Avg. audit ROI</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <span class="hero-card-title">Sample Risk Profile</span>
+            <span class="hero-card-status">Live Analysis</span>
+          </div>
+          <div class="hero-card-row"><span class="label-txt">IP Ownership</span><span class="val">Verified <span class="risk-pill low">Low</span></span></div>
+          <div class="hero-card-row"><span class="label-txt">Patent Expiry</span><span class="val">18 mo <span class="risk-pill high">High</span></span></div>
+          <div class="hero-card-row"><span class="label-txt">Customer Concentration</span><span class="val">71% top 2 <span class="risk-pill high">High</span></span></div>
+          <div class="hero-card-row"><span class="label-txt">Reproducibility Score</span><span class="val">82% <span class="risk-pill mid">Mid</span></span></div>
+          <div class="hero-card-row"><span class="label-txt">Burn Rate / Runway</span><span class="val">14 mo <span class="risk-pill mid">Mid</span></span></div>
+          <div class="hero-card-row"><span class="label-txt">Regulatory Posture</span><span class="val">Clean <span class="risk-pill low">Low</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES — FOUR PILLARS
+============================================================ -->
+<section class="section" id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">Our Methodology</span>
+      <h2 id="services-heading">The four pillars <em class="gradient-text">framework</em></h2>
+      <p>Every ValeBorne engagement is structured around four interlocking audit dimensions. No pillar is optional — each one has caught deal-breaking risks the others would have missed.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card reveal reveal-d1" data-grad="cyan">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Legal &amp; Compliance</h3>
+        <p>IP ownership verification, FDA/EMA regulatory posture, HIPAA/GDPR data privacy, and freedom-to-operate analysis before you commit capital.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">IP &amp; Patents</span>
+          <span class="pillar-tag">FDA/EMA</span>
+          <span class="pillar-tag">Privacy</span>
+        </div>
+      </div>
+
+      <div class="pillar-card reveal reveal-d2" data-grad="purple">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Technical &amp; Data Integrity</h3>
+        <p>Data quality (&gt;10,000 sample threshold, &gt;85% reproducibility), infrastructure scalability, API stability, and complete provenance tracking.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Reproducibility</span>
+          <span class="pillar-tag">Architecture</span>
+          <span class="pillar-tag">Provenance</span>
+        </div>
+      </div>
+
+      <div class="pillar-card reveal reveal-d3" data-grad="green">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Financial Health</h3>
+        <p>Burn rate and runway modeling, revenue quality scrutiny, customer concentration, churn, and forensic accounting ratios beyond standard review.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Forensics</span>
+          <span class="pillar-tag">Revenue Quality</span>
+          <span class="pillar-tag">Runway</span>
+        </div>
+      </div>
+
+      <div class="pillar-card reveal reveal-d4" data-grad="amber">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <h3>Operational Risk</h3>
+        <p>Team turnover and key-person dependency, process maturity (SOPs, QC), vendor and supply chain concentration, scalability signals.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Talent</span>
+          <span class="pillar-tag">Process Maturity</span>
+          <span class="pillar-tag">Vendors</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+============================================================ -->
+<section class="section" id="pricing" aria-labelledby="pricing-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">Transparent Pricing</span>
+      <h2 id="pricing-heading">Pick the right <em class="gradient-text">depth of analysis</em></h2>
+      <p>From rapid 3-day red flag audits to comprehensive 10-day deep dives, with portfolio and partnership pricing for multi-deal acquirers.</p>
+    </div>
+
+    <!-- Core offerings -->
+    <div class="pricing-block">
+      <div class="pricing-block-header reveal">
+        <h3>Core audit offerings</h3>
+        <p>Choose the depth of analysis that matches your deal stage and timeline.</p>
+      </div>
+      <div class="price-cards cols-3">
+        <div class="price-card reveal reveal-d1">
+          <div class="price-tier-label">Á la carte</div>
+          <h4>Unbundled Component</h4>
+          <div class="price-amt">$5,000</div>
+          <div class="price-period">per component</div>
+          <p class="price-desc">Commission a single pillar — Legal, Technical/IP, Financial Health, or Operational Risk — as a standalone deliverable. Purchase individually.</p>
+          <ul class="price-features">
+            <li>One pillar, fully audited</li>
+            <li>Standalone written deliverable</li>
+            <li>Credited toward full audit upgrades</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Request a Component</a>
+        </div>
+
+        <div class="price-card featured reveal reveal-d2">
+          <div class="price-tier-label">All four pillars</div>
+          <h4>Red Flag Audit</h4>
+          <div class="price-amt">$15,000</div>
+          <div class="price-period">3-day turnaround · all 4 pillars included</div>
+          <p class="price-desc">Rapid full-spectrum risk assessment across every pillar. Identify deal-breakers before committing further diligence resources.</p>
+          <ul class="price-features">
+            <li>All four pillars in one engagement</li>
+            <li>Executive risk scorecard</li>
+            <li>Deal-breaker flagging in 72 hours</li>
+            <li>Saves $5,000 vs unbundled</li>
+          </ul>
+          <a href="#contact" class="btn btn-gradient">Request a Free Demo</a>
+        </div>
+
+        <div class="price-card reveal reveal-d3">
+          <div class="price-tier-label">Comprehensive</div>
+          <h4>Deep Due Diligence</h4>
+          <div class="price-amt">$45,000</div>
+          <div class="price-period">10-day engagement</div>
+          <p class="price-desc">Full-spectrum analysis with integration risk modeling, scenario planning, and renegotiation leverage before you sign.</p>
+          <ul class="price-features">
+            <li>Everything in the Red Flag Audit</li>
+            <li>Integration risk modeling (Y1–Y3)</li>
+            <li>Reproducibility scoring</li>
+            <li>Negotiation leverage report</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Start Due Diligence</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Tiers -->
+    <div class="pricing-block">
+      <div class="pricing-block-header reveal">
+        <h3>Portfolio tiers</h3>
+        <p>Volume pricing for VCs and PE firms managing multiple genomic data deals.</p>
+      </div>
+      <div class="price-cards cols-3">
+        <div class="price-card reveal reveal-d1">
+          <div class="price-tier-label">Bronze · Essential</div>
+          <h4>Bronze</h4>
+          <div class="price-amt">$6,500</div>
+          <div class="price-period">per company · 35% off standalone</div>
+          <p class="price-desc">Basic four-pillar risk screening with a standard report. Ideal for initial pipeline screening across multiple targets.</p>
+          <ul class="price-features">
+            <li>Four-pillar risk screening</li>
+            <li>Standard report</li>
+            <li>Executive summary</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Get Bronze Assessment</a>
+        </div>
+        <div class="price-card reveal reveal-d2">
+          <div class="price-tier-label">Silver · Recommended</div>
+          <h4>Silver</h4>
+          <div class="price-amt">$7,500</div>
+          <div class="price-period">per company · 25% off standalone</div>
+          <p class="price-desc">Enhanced analysis with customized recommendations tailored to your investment thesis and portfolio strategy.</p>
+          <ul class="price-features">
+            <li>Everything in Bronze</li>
+            <li>Thesis-aligned recommendations</li>
+            <li>Comparative peer benchmarking</li>
+            <li>Deal priority ranking</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Get Silver Assessment</a>
+        </div>
+        <div class="price-card reveal reveal-d3">
+          <div class="price-tier-label">Gold · Comprehensive</div>
+          <h4>Gold</h4>
+          <div class="price-amt">$8,500</div>
+          <div class="price-period">per company · 15% off standalone</div>
+          <p class="price-desc">Full deep diligence with integration risk modeling and ongoing consultation throughout the deal lifecycle.</p>
+          <ul class="price-features">
+            <li>Everything in Silver</li>
+            <li>Integration risk modeling</li>
+            <li>Year 1–3 cost scenarios</li>
+            <li>Ongoing deal-lifecycle consultation</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Get Gold Assessment</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partnership Packages -->
+    <div class="pricing-block">
+      <div class="pricing-block-header reveal">
+        <h3>Partnership packages</h3>
+        <p>For high-volume acquirers — bundled RFAs and DDDs at negotiated rates.</p>
+      </div>
+      <div class="price-cards">
+        <div class="price-card dark-card partnership-1 reveal reveal-d1">
+          <div class="price-tier-label">Partnership · Tier 1</div>
+          <h4>Standard Partnership</h4>
+          <div class="price-amt">$200,000</div>
+          <div class="price-period">Net benefit for client</div>
+          <p class="price-desc">10 Red Flag Audits + 5 Deep Due Diligence engagements. Ideal for active PE firms running 3–5 genomic deals per year.</p>
+          <ul class="price-features">
+            <li>10 RFAs + 5 DDDs</li>
+            <li>Priority scheduling</li>
+            <li>Dedicated analyst</li>
+            <li>Quarterly portfolio review</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Inquire About Tier 1</a>
+        </div>
+        <div class="price-card dark-card partnership-2 reveal reveal-d2">
+          <div class="price-tier-label">Partnership · Tier 2</div>
+          <h4>Premium Partnership</h4>
+          <div class="price-amt">$400,000</div>
+          <div class="price-period">Net benefit for client</div>
+          <p class="price-desc">15 Red Flag Audits + 10 Deep Due Diligence engagements. For strategic acquirers running 6–10+ deals annually.</p>
+          <ul class="price-features">
+            <li>15 RFAs + 10 DDDs</li>
+            <li>Senior analyst team</li>
+            <li>Monthly intelligence briefings</li>
+            <li>Post-close integration advisory</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Inquire About Tier 2</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founder's discount -->
+    <div class="founder-callout reveal">
+      <div class="founder-callout-text">
+        <strong>Founder's Discount:</strong> We offer 25% off for the first 10 clients across all service tiers. Contact us to confirm eligibility before your next deal closes.
+      </div>
+      <span class="founder-chip">Limited Spots</span>
+    </div>
+
+    <!-- Satisfaction pledge -->
+    <div class="pledge-card reveal">
+      <div class="pledge-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <div>
+        <span class="pledge-label">Our Pledge</span>
+        <h4>Satisfaction Commitment</h4>
+        <p>We are so confident in our Red Flag Audit that if you are not satisfied with the depth and clarity of our findings, we will work with you to make it right — including a partial credit toward future work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LEAD MAGNET
+============================================================ -->
+<section class="section section-sm" id="lead-magnet" aria-labelledby="lead-heading">
+  <div class="container">
+    <div class="lead-grid">
+      <div class="reveal">
+        <span class="overline">Free Resource</span>
+        <h2 id="lead-heading">5 genomic data risks most M&amp;A teams <em class="gradient-text purple">miss</em></h2>
+        <p>
+          A free, focused PDF written for VC and PE partners evaluating their next genomic data acquisition. We've distilled the most common — and most expensive — risk categories we encounter, with concrete examples of how each one has derailed real deals.
+        </p>
+        <p>Sent immediately to your inbox. No follow-up sequence unless you ask.</p>
+
+        <div class="lead-magnet-cover" style="margin-top:32px;">
+          <div class="lead-cover-tag">PDF · 12 pages</div>
+          <div class="lead-cover-title">5 Genomic Data Risks<br/>in M&amp;A Deals</div>
+          <p style="font-size:.92rem;color:rgba(255,255,255,.8);margin:0;font-weight:500;">A briefing for deal teams evaluating genomic data acquisitions.</p>
+          <ul class="lead-cover-list">
+            <li>IP and patent expiry blind spots</li>
+            <li>Reproducibility risk in published claims</li>
+            <li>Customer concentration that survives diligence</li>
+            <li>Regulatory exposure across FDA, EMA, HIPAA</li>
+            <li>Integration cost categories acquirers underestimate</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <div class="lead-form">
+          <h3>Get your free copy</h3>
+          <form name="lead-magnet" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="lead-form-el">
+            <input type="hidden" name="form-name" value="lead-magnet" />
+            <p hidden><label>Don't fill this: <input name="bot-field" /></label></p>
+
+            <div class="form-group">
+              <label for="lead-name">Full Name <span class="req">*</span></label>
+              <input type="text" name="name" id="lead-name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="lead-email">Work Email <span class="req">*</span></label>
+              <input type="email" name="email" id="lead-email" placeholder="jane@yourfirm.com" required />
+            </div>
+            <div class="form-group">
+              <label for="lead-company">Company <span class="req">*</span></label>
+              <input type="text" name="company" id="lead-company" placeholder="Your Firm" required />
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-gradient">Download the PDF</button>
+            </div>
+            <p style="font-size:.78rem;color:var(--text-3);margin-top:18px;line-height:1.5;text-align:center;">
+              We respect your inbox. No spam, no sales sequence, no sharing your details.
+            </p>
+          </form>
+          <div class="form-success" id="lead-form-success">
+            ✓ Sent. Check your inbox in a moment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT / DEMO REQUEST
+============================================================ -->
+<section class="section" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">Book a Free Demo</span>
+      <h2 id="contact-heading">Request a <em class="gradient-text green">consultation</em></h2>
+      <p>
+        We offer every prospective client a free demo risk assessment on a target of their choice. Tell us about your deal and we'll prepare a focused conversation tailored to it.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>What to expect</h3>
+        <p>A 15-minute discovery call where we walk you through our methodology and scope the right engagement for your timeline.</p>
+        <p>If you have a target in mind, we'll prepare a preliminary high-level scan beforehand so the conversation is grounded in real data — not generic talking points.</p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-method-text">
+              <strong>Email</strong>
+              <a href="mailto:hello@valeborne.com">hello@valeborne.com</a>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-method-text">
+              <strong>Office</strong>
+              <span>Charlotte, North Carolina</span>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="contact-method-text">
+              <strong>Response time</strong>
+              <span>Within 1 business day</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calendly-cta-card">
+          <h4>Prefer to book directly?</h4>
+          <p>Skip the form and grab a 15-minute slot on our calendar.</p>
+          <a href="https://calendly.com/valeborne/demo" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-arrow">Schedule on Calendly</a>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <form class="demo-form" name="demo-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="demo-form-el">
+          <input type="hidden" name="form-name" value="demo-request" />
+          <p hidden><label>Don't fill this: <input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="demo-name">Full Name <span class="req">*</span></label>
+              <input type="text" name="name" id="demo-name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="demo-email">Work Email <span class="req">*</span></label>
+              <input type="email" name="email" id="demo-email" placeholder="jane@yourfirm.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="demo-company">Company Name <span class="req">*</span></label>
+            <input type="text" name="company" id="demo-company" placeholder="Your firm or organization" required />
+          </div>
+
+          <div class="form-group">
+            <label for="demo-target">
+              Specific genomic company or technology area you're evaluating
+              <span class="opt">(optional)</span>
+            </label>
+            <p class="helper">
+              If you have a particular target in mind, let us know. We can conduct a preliminary, high-level scan of publicly available information to make our discussion more valuable. This is for internal preparation only and will not be shared.
+            </p>
+            <textarea name="target" id="demo-target" placeholder="e.g. spatial transcriptomics platforms, a specific company name, a technology category…"></textarea>
+          </div>
+
+          <div class="confidentiality-notice">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div>
+              <strong>Your confidentiality is our priority.</strong>
+              Any information you share about potential targets or deals will be kept strictly confidential and used only to prepare for our conversation.
+              <a href="#">See our Privacy Policy</a>.
+            </div>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-gradient">Book a Free Demo</button>
+          </div>
+        </form>
+        <div class="form-success" id="demo-form-success" style="margin-top:24px;">
+          ✓ Thank you. We'll respond within one business day.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ARTICLES & CASE STUDIES
+============================================================ -->
+<section class="section" id="articles" aria-labelledby="articles-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="overline">Insights</span>
+      <h2 id="articles-heading">Articles &amp; <em class="gradient-text amber">case studies</em></h2>
+      <p>Periodic briefings from our team on the realities of genomic M&amp;A — what we see, what surprises acquirers, and what we'd do differently.</p>
+    </div>
+
+    <div class="articles-grid">
+      <article class="article-card reveal reveal-d1">
+        <div class="article-thumb grad-1">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+          <span class="case-study-badge">Case Study</span>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">Case Study · Anonymized</div>
+          <h4>How we found a $15M integration risk on a multi-omics deal</h4>
+          <p>A PE firm was 48 hours from signing when our Red Flag Audit surfaced a customer concentration issue and a patent expiry that reshaped the entire valuation.</p>
+          <a href="#contact" class="article-link">Request the full case study →</a>
+        </div>
+      </article>
+
+      <article class="article-card reveal reveal-d2">
+        <div class="article-thumb grad-2">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">Briefing</div>
+          <h4>5 genomic data risks in M&amp;A deals</h4>
+          <p>The five risk categories we most often see acquirers miss — and how each one has materially changed a deal we've worked.</p>
+          <a href="#lead-magnet" class="article-link">Download the briefing →</a>
+        </div>
+      </article>
+
+      <article class="article-card reveal reveal-d3 coming-soon">
+        <div class="article-thumb grad-3">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">Analysis · Coming Soon</div>
+          <h4>Reproducibility risk in genomic acquisitions</h4>
+          <p>What the reproducibility crisis means for acquirers — and the validation checks every deal team should run before signing.</p>
+          <span class="article-link">Coming soon →</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo">ValeBorne<span class="dot"></span></a>
+        <p>Genomic M&amp;A intelligence for firms that cannot afford to inherit risk. Based in Charlotte, North Carolina.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Site</h5>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#articles">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#pricing">Red Flag Audit</a></li>
+          <li><a href="#pricing">Deep Due Diligence</a></li>
+          <li><a href="#pricing">Unbundled Components</a></li>
+          <li><a href="#pricing">Portfolio Tiers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="mailto:hello@valeborne.com">hello@valeborne.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ValeBorne Inc. All rights reserved. Delaware C-Corporation. Charlotte, NC.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+/* ---------- NAV + SCROLL ---------- */
+const nav = document.getElementById('site-nav');
+const scrollProgress = document.getElementById('scroll-progress');
+const scrollTopBtn = document.getElementById('scroll-top');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 30);
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  scrollProgress.style.width = ((y/docH)*100) + '%';
+  scrollTopBtn.classList.toggle('visible', y > 600);
+});
+scrollTopBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+const navToggle = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+navToggle.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', false);
+}));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    const t = document.querySelector(href);
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+
+/* ---------- SCROLL REVEAL ---------- */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('visible');
+      revealObs.unobserve(en.target);
+    }
+  });
+}, {threshold:.1, rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ---------- HERO COUNTERS ---------- */
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      const el = en.target;
+      const target = parseInt(el.dataset.target,10);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1600, start = performance.now();
+      function tick(now) {
+        const p = Math.min((now-start)/dur, 1);
+        const eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.floor(eased*target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(tick);
+      countObs.unobserve(el);
+    }
+  });
+}, {threshold:.5});
+document.querySelectorAll('.hero-stat .num').forEach(c => countObs.observe(c));
+
+/* ---------- HERO PARTICLE CANVAS ---------- */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  function init() {
+    nodes = [];
+    const n = Math.min(60, Math.floor((W*H)/16000));
+    for (let i=0; i<n; i++) nodes.push({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+      r:Math.random()*1.6+.5
+    });
+  }
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    for (let i=0; i<nodes.length; i++) {
+      const a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if (a.x<0||a.x>W) a.vx*=-1;
+      if (a.y<0||a.y>H) a.vy*=-1;
+      ctx.beginPath();
+      ctx.arc(a.x,a.y,a.r,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(0,196,244,.6)';
+      ctx.fill();
+      for (let j=i+1; j<nodes.length; j++) {
+        const b = nodes[j];
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if (d < 140) {
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle = `rgba(0,196,244,${.16*(1-d/140)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); init(); draw();
+  window.addEventListener('resize', () => { resize(); init(); });
+})();
+
+/* ---------- FORM SUBMISSION ---------- */
+function encodeData(d) { return Object.keys(d).map(k => encodeURIComponent(k)+'='+encodeURIComponent(d[k])).join('&'); }
+function setupForm(fid, sid) {
+  const form = document.getElementById(fid);
+  const succ = document.getElementById(sid);
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const d = {};
+    fd.forEach((v,k) => d[k]=v);
+    fetch('/', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: encodeData(d)
+    }).then(() => {
+      form.style.display = 'none';
+      if (succ) succ.classList.add('active');
+    }).catch(err => {
+      form.style.display = 'none';
+      if (succ) succ.classList.add('active');
+      console.warn('Form submit (preview):', err);
+    });
+  });
+}
+setupForm('demo-form-el', 'demo-form-success');
+setupForm('lead-form-el', 'lead-form-success');
+</script>
+</body>
+</html>
