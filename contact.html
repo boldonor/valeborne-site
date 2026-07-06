@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | ValeBorne Inc.</title>
+  <meta name="description" content="Get in touch with ValeBorne. Ready to make your next deal with confidence? Contact us or book a 15-minute consultation.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo" aria-label="ValeBorne home">
+        <span class="logo-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        ValeBorne
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Solutions</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-nav">Get Started</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= PAGE HERO ================= -->
+    <section class="hero page-hero">
+      <div class="container">
+        <p class="eyebrow reveal">Contact</p>
+        <h1 class="reveal">Get in Touch</h1>
+        <p class="sub reveal d1">Ready to make your next deal with confidence?</p>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT FORM + DIRECT INFO ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="card-grid cols-2" style="align-items:start;">
+
+          <!-- Form -->
+          <div class="reveal">
+            <!-- data-demo-form shows a confirmation message. To make it live, see the
+                 README: point action= to Formspree/Netlify or your own endpoint. -->
+            <form data-demo-form novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name <span class="required">*</span></label>
+                  <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" required autocomplete="email" placeholder="jane@firm.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Acme Capital">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="service">Service Interest</label>
+                  <select id="service" name="service">
+                    <option value="" disabled selected>Select a service…</option>
+                    <option>Single Pillar Analysis</option>
+                    <option>Red Flag Audit (RFA)</option>
+                    <option>Deep Due Diligence (DDD)</option>
+                    <option>Not Sure Yet</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="budget">Budget Range</label>
+                  <select id="budget" name="budget">
+                    <option value="" disabled selected>Select a range…</option>
+                    <option>Under $10K</option>
+                    <option>$10K–$25K</option>
+                    <option>$25K–$50K</option>
+                    <option>$50K+</option>
+                    <option>Not Sure</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us about the target and your timeline."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <p class="form-note">Thanks for reaching out. We'll respond within one business day. For anything urgent, email hello@valeborne.com.</p>
+            </form>
+          </div>
+
+          <!-- Direct contact -->
+          <div class="reveal d1">
+            <div class="card">
+              <p class="eyebrow" style="margin-bottom:10px;">Reach us directly</p>
+              <h3 style="margin-bottom:8px;">hello@valeborne.com</h3>
+              <p style="margin-bottom:18px;">Prefer email? Write to us directly and we'll route your note to the right analyst.</p>
+              <a href="mailto:hello@valeborne.com" class="btn btn-secondary">Email Us</a>
+            </div>
+
+            <div class="card" style="margin-top:24px;">
+              <p class="eyebrow" style="margin-bottom:10px;">Where we are</p>
+              <h3 style="margin-bottom:8px;">Charlotte, North Carolina</h3>
+              <p>ValeBorne Inc. — a Delaware C-Corporation serving clients across North America and Europe.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONSULTATION CTA ================= -->
+    <section class="cta-band">
+      <div class="container reveal">
+        <h2>Not ready to commit? Let's talk.</h2>
+        <p>Schedule a 15-minute consultation to see how ValeBorne can accelerate your next deal. No obligation—just a conversation about your due diligence challenges and how our AI platform can help.</p>
+        <!-- PLACEHOLDER: replace href with your Calendly / scheduling link -->
+        <a href="#" class="btn btn-primary">Book a Consultation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            ValeBorne
+          </a>
+          <p>ValeBorne Inc. | Charlotte, NC | Delaware C-Corp</p>
+          <p style="margin-top:10px;"><a href="mailto:hello@valeborne.com">hello@valeborne.com</a></p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-nav" aria-label="Company links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" rel="noopener">LinkedIn</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ValeBorne Inc. All rights reserved.</span>
+        <span>Institutional-grade genomic M&amp;A intelligence.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
